@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar ul li {
+    margin: 10px 0;
+}
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.sidebar {
+    background-color: #2F4F77;
+    color: #fff;
+    width: 20%;
+    padding: 20px;
+    height: 100vh;
+}
+
+.sidebar .menu p {
+    cursor: pointer;
+    padding: 8px 0;
+}
+
+.sidebar .active {
+    background-color: #ffffff;
+    color: #2F4F77;
+    font-weight: bold;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+.main-content {
+    background-color: #A9A9D4;
+    width: 80%;
+    padding: 20px;
+}
+
+#notifications {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.notification-card {
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.notification-card:hover {
+    background-color: #f0f0f0;
+}

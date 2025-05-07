@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Sheet</title>
+    <link rel="stylesheet" href="software3.css">
+    <script defer src="faculty_attendence2.js"></script>
+    <link rel="stylesheet" href="faculty_attendence2.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Collegia</h2>
+        <!-- <ul>
+            <li class="active"><i class="fas fa-clipboard-list"></i> Attendance Sheet</li>
+            <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+            <li><i class="fas fa-chart-bar"></i> Report</li> -->
+        <!-- </ul> -->
+
+        <ul>
+            <li>
+                <a href="faculty_attendence2.html">
+                    <button onclick="showAttendance()">Attendance Sheet</button>
+                </a>
+            </li>
+            <li>
+                <a href="faculty_dashboard.html">
+                    <button onclick="showDashboard()">Dashboard</button>
+                </a>
+            </li>
+            <li>
+                <a href="report.html">
+                    <button onclick="showReport()">Report</button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Attendance</h1>
+            <div class="top-icons">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-user"></i>
+                <button onclick="toggleDarkMode()">🌙</button>
+            </div>
+        </header>
+
+        <div class="attendance-container">
+            <label>Subject: </label>
+            <select id="subject">
+                <option>Advanced Java</option>
+                <option>Data Structures</option>
+                <option>Database Management</option>
+            </select>
+
+            <label>Section: </label>
+            <select id="section">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+
+            <label>Date: </label>
+            <input type="date" id="date" value="2023-07-13">
+            <button onclick="generateAttendance()">Generate Sheet</button>
+        </div>
+
+        <div class="attendance-sheet">
+            <h2>Attendance Sheet</h2>
+            <input type="text" id="search" placeholder="Search Student..." onkeyup="searchStudent()">
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll" onclick="toggleSelectAll()"></th>
+                        <th>Student Name</th>
+                        <th>Student ID</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="student-list">
+                    <tr>
+                        <td><input type="checkbox" class="student-checkbox"></td>
+                        <td>Maria DS</td>
+                        <td>4171234</td>
+                        <td>Present</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="student-checkbox"></td>
+                        <td>Mark MO</td>
+                        <td>4171235</td>
+                        <td>Present</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="student-checkbox"></td>
+                        <td>Alex SS</td>
+                        <td>4171236</td>
+                        <td>Present</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="submitAttendance()">Submit</button>
+            <button onclick="resetAttendance()">Reset</button>
+        </div>
+    </div>
+</body>
+</html>

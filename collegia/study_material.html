@@ -1,0 +1,66 @@
+<!-- study_material.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Material</title>
+    <link rel="stylesheet" href="study_material.css">
+    <script defer src="study_material.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>STUDY MATERIAL</h2>
+        
+
+        <ul>
+            <li><a href="#" onclick="toggleSidebar()">☰ Toggle</a></li>
+            <li>Computer Organization and Architecture (COA)</li>
+            <li>Design Thinking</li>
+            <li>MAD</li>
+            <li>Machine Learning</li>
+            <li>Seminar/Case Studies</li>
+            <li>Software Engineering</li>
+        </ul>
+    </div>
+    <div class="content">
+        <h1>Study Material</h1>
+        <input type="text" id="search" onkeyup="searchMaterials()" placeholder="Search materials...">
+        <button onclick="toggleTheme()">Toggle Theme</button>
+        <button onclick="sortMaterials()">Sort Materials</button>
+        <button onclick="resetView()">Reset View</button>
+        <div class="grid" id="materialGrid">
+            <div class="card" onclick="openMaterial('coa.html')">
+                <h3>Computer Organization and Architecture (COA)</h3>
+                <p>Satyendr Singh</p>
+                <span class="initial">S</span>
+            </div>
+            <div class="card" onclick="openMaterial('se.html')">
+                <h3>SE</h3>
+                <p>Nishtha Phutela</p>
+                <span class="initial">N</span>
+            </div>
+            <div class="card" onclick="openMaterial('design_thinking.html')">
+                <h3>Design Thinking</h3>
+                <p>Dr. Nirupama</p>
+                <span class="initial">D</span>
+            </div>
+            <div class="card" onclick="openMaterial('mad.html')">
+                <h3>MAD</h3>
+                <p>Gautam Gupta</p>
+                <span class="initial">G</span>
+            </div>
+            <div class="card" onclick="openMaterial('machine_learning.html')">
+                <h3>Machine Learning</h3>
+                <p>Anantha Rao</p>
+                <span class="initial">A</span>
+            </div>
+            <div class="card" onclick="openMaterial('seminar.html')">
+                <h3>Seminar/Case Studies</h3>
+                <p>Kiran Khattar</p>
+                <span class="initial">K</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+header nav {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+header nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.info-panel {
+    padding: 10px;
+    background-color: #eef1f7;
+    border-bottom: 2px solid #ccc;
+}
+.color-box {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+.red { background-color: red; }
+.green { background-color: green; }
+.blue { background-color: blue; }
+.teal { background-color: teal; }
+
+.calendar {
+    text-align: center;
+    padding: 20px;
+}
+.weekdays, .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+.weekdays div, .days div {
+    padding: 15px 0;
+    background-color: #d3d3f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.days div.holiday { background-color: red; color: #fff; }
+.days div.exam { background-color: green; color: #fff; }
+.days div.event { background-color: blue; color: #fff; }
+.days div.other-event { background-color: teal; color: #fff; }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Calendar</title>
+    <link rel="stylesheet" href="calender.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <li><a href="faculty_dashboard.html">Dashboard</a></li>
+                <li><a href="courses.html">courses</a></li>
+                <li><a href="notifications.html">notifications</a></li>
+                <li><a href="report.html">report</a></li>
+                <li><a href="feedback.html">feedback</a></li>
+                <li><a href="student_management.html">student_management</a></li>
+            </nav>
+        </header>
+
+        <div class="info-panel">
+            <p><span class="color-box red"></span> Colours show holidays.</p>
+            <p><span class="color-box green"></span> Colours show exams.</p>
+            <p><span class="color-box blue"></span> Colours show events.</p>
+            <p><span class="color-box teal"></span> Colours show other events.</p>
+        </div>
+
+        <div class="calendar">
+            <h2>February 2025</h2>
+            <div class="weekdays">
+                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+            </div>
+            <div class="days" id="calendarDays">
+                <!-- Calendar days will be injected here using JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="calender.js"></script>
+</body>
+</html>

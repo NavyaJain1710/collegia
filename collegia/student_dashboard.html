@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="student_dashboard.css"> 
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="https://www.pngmart.com/files/23/Profile-PNG-Photo.png" alt="Profile Picture" class="profile-pic">
+                <h2>XYZ</h2>
+                <p>Roll No: 230411</p>
+                <p>IV Sem</p>
+                <p>B.Tech CSE</p>
+                <p>CSE-VII</p>
+            </div>
+            <nav class="menu">
+            
+
+                <ul>
+                    <li><a href="student_dashboard.html">Dashboard</a></li>
+                    <li><a href="courses.html">courses</a></li>
+                    <li><a href="notifications.html">notifications</a></li>
+                    <li><a href="report.html">report</a></li>
+                    <li><a href="feedback.html">feedback</a></li>
+                    <li><a href="calender.html">calender</a></li>
+                    <li><a href="study_material.html">study_material</a></li>
+                    <li><a href="complaint_management.html">complaint_management</a></li>
+                    <li><a href="Plagiarism.html">Plagiarism</a></li>
+                    <li><a href="complaint_registration.html">complaint_registration</a></li>
+                    <li><a href="events.html">events</a></li>
+                    <li><a href="transpotation.html">transpotation</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content">
+            <header class="top-bar">
+                <h1>Collegia</h1>
+                <div class="icons">
+                    <span class="bell-icon">🔔</span>
+                    <span class="user-icon">👤</span>
+                </div>
+            </header>
+            <section class="grid-container">
+                <div class="grid-item" onclick="navigate('courses')">Courses</div>
+                <div class="grid-item" onclick="navigate('assignments')">Assignments</div>
+                <div class="grid-item" onclick="navigate('study-materials')">Study Materials</div>
+                <div class="grid-item" onclick="navigate('attendance')">Attendance Tracker</div>
+                <div class="grid-item" onclick="navigate('transportation')">Transportation Booking</div>
+                <div class="grid-item" onclick="navigate('notifications')">Notifications</div>
+                <div class="grid-item" onclick="navigate('complaints')">Complaint Registration</div>
+                <div class="grid-item" onclick="navigate('calendar')">Academic Calendar</div>
+                <div class="grid-item" onclick="navigate('feedbacks')">Feedbacks</div>
+            </section>
+        </main>
+    </div>
+    <script src="student_dashboard.js"></script> 
+</body>
+</html>

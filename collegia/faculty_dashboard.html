@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="faculty_dashboard.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile">
+            <img src="https://www.pngmart.com/files/23/Profile-PNG-Photo.png" alt="Profile Picture">
+            <h2>XYZ</h2>
+            <p>Faculty ID : 2309<br>Department<br>Designation - Assistant Professor</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="faculty_dashboard.html">Dashboard</a></li>
+                <li><a href="courses.html">courses</a></li>
+                <li><a href="notifications.html">notifications</a></li>
+                <li><a href="report.html">report</a></li>
+                <li><a href="feedback.html">feedback</a></li>
+                <li><a href="calender.html">calender</a></li>
+                <li><a href="study_material.html">study_material</a></li>
+                <li><a href="complaint_management.html">complaint_management</a></li>
+                <li><a href="faculty_attendence1.html">faculty_attendence</a></li>
+                <li><a href="Plagiarism.html">Plagiarism</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <h1>FACULTY DASHBOARD</h1>
+        <div class="cards">
+            <div class="card" onclick="showMessage('My Courses')">My Courses</div>
+            <div class="card" onclick="showMessage('Assignments & Submissions')">Assignments & Submissions</div>
+            <div class="card" onclick="showMessage('Course Materials Upload')">Course Materials Upload</div>
+            <div class="card" onclick="showMessage('Attendance Management')">Attendance Management</div>
+            <div class="card" onclick="showMessage('Notifications')">Notifications</div>
+            <div class="card" onclick="showMessage('AI Based Plagiarism Check')">AI Based Plagiarism Check</div>
+            <div class="card" onclick="generateReport()">Generate Report</div>
+        </div>
+    </div>
+
+    <script src="faculty_dashboard.js"></script>
+</body>
+</html>

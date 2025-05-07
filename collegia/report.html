@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Report</title>
+    <link rel="stylesheet" href="report.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src=https://innovation.ox.ac.uk/wp-content/uploads/2020/07/collegia-logo.png alt="Collegia Logo">
+            <h2>Collegia</h2>
+        </div>
+    </div>
+    
+    <div class="title-bar">
+        <h1>GENERATE <span> REPORT </span></h1>
+    </div>
+
+    <div class="form-container">
+        <form id="report-form">
+            <label for="student-name">Student Name:</label>
+            <input type="text" id="student-name" placeholder="Enter Student Name" required>
+
+            <label for="student-id">Student ID:</label>
+            <input type="text" id="student-id" placeholder="Enter Student ID" required>
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" placeholder="Enter Course Name" required>
+
+            <label for="grades">Grades:</label>
+            <input type="text" id="grades" placeholder="Enter Grades (comma separated)" required>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" placeholder="Enter Comments"></textarea>
+
+            <button type="submit">Generate Report</button>
+        </form>
+    </div>
+
+    <script src="report.js"></script>
+</body>
+</html>

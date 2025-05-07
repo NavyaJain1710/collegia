@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Table</title>
+    <link rel="stylesheet" href="courses.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://innovation.ox.ac.uk/wp-content/uploads/2020/07/collegia-logo.png" width="60px"  alt="Collegia Logo"  class="logo">
+            <h1>COURSES</h1>
+        </header>
+        <table id="courseTable">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Sessions</th>
+                    <th>Credits</th>
+                    <th>Faculty Name</th>
+                    <th>Area</th>
+                    <th>Next Lecture On</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr><td>CSE2709</td><td>Computer Organization & Architecture</td><td>3.0</td><td>3.0</td><td>Dr. Satyendr Singh</td><td>-</td><td>February 24</td></tr>
+                <tr><td>PSP2709</td><td>Design Thinking</td><td>2.0</td><td>2.0</td><td>Dr. Nirupama M.P</td><td>-</td><td>February 25</td></tr>
+                <tr><td>CSE2032</td><td>Machine Learning</td><td>3.0</td><td>3.0</td><td>Prof. Anantha Rao</td><td>-</td><td>February 24</td></tr>
+                <tr><td>CSE3709</td><td>Mobile Application Development</td><td>2.0</td><td>2.0</td><td>Mr. Gautam Gupta</td><td>-</td><td>February 25</td></tr>
+                <tr><td>PRJ2903</td><td>Project II (MAD/Web Programming/HCI/ML)</td><td>2.0</td><td>2.0</td><td>Dr. Meenakshi, Dr. Saurabh Mishra</td><td>-</td><td>February 24</td></tr>
+                <tr><td>SEM3501</td><td>Seminar / Case Studies</td><td>2.0</td><td>2.0</td><td>Dr. Kiran Khatter</td><td>-</td><td>February 27</td></tr>
+                <tr><td>CSE3005</td><td>Software Engineering</td><td>3.0</td><td>3.0</td><td>Dr. Nishtha Phutela</td><td>-</td><td>February 25</td></tr>
+            </tbody>
+        </table>
+        <div class="buttons">
+            <button onclick="showAlert()">Class Schedule</button>
+            <button onclick="highlightToday()">Highlight Today's Lectures</button>
+            <button onclick="sortByName()">Sort by Name</button>
+            <button onclick="exportToCSV()">Export CSV</button>
+            <button onclick="countTotalCredits()">Total Credits</button>
+            <button onclick="filterByFaculty()">Filter by Faculty</button>
+        </div>
+    </div>
+
+    <script src="courses.js"></script>
+</body>
+</html>

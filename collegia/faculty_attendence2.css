@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    background: #2d5b96;
+    color: white;
+    padding: 15px;
+    height: 100vh;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 12px;
+    cursor: pointer;
+}
+
+.sidebar ul li:hover, .active {
+    background: #2f4a7b;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background: #eaf0f1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attendance-container {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.attendance-sheet {
+    margin-top: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    background: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2980b9;
+}

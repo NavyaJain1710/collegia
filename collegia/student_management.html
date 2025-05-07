@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Management</title>
+  <link rel="stylesheet" href="student_management.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="profile">
+      <div class="avatar"></div>
+      <h2>XYZ</h2>
+      <p>Roll No: 230411</p>
+      <p>IV Sem</p>
+      <p>B.Tech CSE</p>
+      <p>CSE-VII</p>
+    </div>
+    <nav>
+      <a href="admin_dashboard.html">Dashboard</a>
+      <a href="course_registration.html">Courses</a>
+      <a href="notifications.html">Notifications</a>
+      <a href="report.html">Report</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="calender.html">Calendar</a>
+      <a href="study_material.html">Study Material</a>
+      <a href="complaint_management.html">Complaint Management</a>
+      <a href="Plagiarism.html">Plagiarism</a>
+      
+    </nav>
+  </div>
+
+  <div class="main">
+    <div class="container">
+      <h1>Student Management</h1>
+      <form id="studentForm">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="roll" placeholder="Roll No" required>
+        <input type="text" id="branch" placeholder="Branch" required>
+        <button type="submit">Save</button>
+      </form>
+
+      <table id="studentTable">
+        <thead>
+          <tr><th>Name</th><th>Roll</th><th>Branch</th><th>Actions</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="student_management.js"></script>
+</body>
+</html>
+

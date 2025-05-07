@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://cache.careers360.mobi/media/article_images/2022/10/20/feature-image-bml-munjal-university-opens-applications-for-mba_a4gRqqz.jpg') no-repeat center center/cover;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    height: 80%;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #002D62;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 80%;
+    height: auto;
+}
+
+.login-box {
+    width: 80%;
+    background-color: #E6D6FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.circle-logo {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #6A11CB, #2575FC);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 70%;
+    padding: 10px 0;
+    margin: 10px 0;
+    background-color: #4169E1;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #27408B;
+}

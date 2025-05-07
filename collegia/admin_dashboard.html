@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="admin_dashboard.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>XYZ</h2>
+        <p>Admin id: 2311</p>
+        <p>Designation: System Administrator</p>
+        <p>Department: IT</p>
+        <div class="menu">
+            <a href="admin_dashboard.html">Dashboard</a>
+            <a href="report.html">User Management</a>
+            <a href="courses.html">Course Management</a>
+            <a href="faculty_attendence1.html">Attendance Management</a>
+            <a href="complaint_management.html">Complaints Management</a>
+            <a href="events.html">events</a>
+            <a href="student_management.html">student_management</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <h1>Admin Dashboard</h1>
+        <div class="cards">
+            <div class="card" onclick="showAlert('User Management')">User Management</div>
+            <div class="card" onclick="showAlert('Course Management')">Course Management</div>
+            <div class="card" onclick="showAlert('Attendance Management')">Attendance Management</div>
+            <div class="card" onclick="showAlert('Complaints Management')">Complaints Management</div>
+            <div class="card" onclick="showAlert('Events')">Events</div>
+        </div>
+    </div>
+    <script src="admin_dashboard.js"></script>
+</body>
+</html>

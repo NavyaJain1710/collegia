@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collegia Attendance</title>
+    <link rel="stylesheet" href="student_attendence.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Collegia</h2>
+        <ul>
+            <li>
+                <a href="student_attendence.html">
+                    <button onclick="showAttendance()">Attendance Sheet</button>
+                </a>
+            </li>
+            <li>
+                <a href="student_dashboard.html">
+                    <button onclick="showDashboard()">Dashboard</button>
+                </a>
+            </li>
+            <li>
+                <a href="report.html">
+                    <button onclick="showReport()">Report</button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Attendance</h1>
+        <label for="semester">Term ( Semester ):</label>
+        <select id="semester" onchange="loadAttendance()">
+            <option>IV Sem</option>
+        </select>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Course Name</th>
+                    <th>Attendance Count</th>
+                </tr>
+            </thead>
+            <tbody id="attendanceTable">
+                <!-- Attendance Data Fills Here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="student_attendence.js"></script>
+</body>
+</html>

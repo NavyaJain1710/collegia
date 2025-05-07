@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Dashboard</title>
+    <link rel="stylesheet" href="faculty_attendence1.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Collegia</h2>
+        <!-- <button onclick="showAttendance()">Attendance Sheet</button>
+        <button onclick="showDashboard()">Dashboard</button>
+        <button onclick="showReport()">Report</button> -->
+        <ul>
+            <li>
+                <a href="faculty_attendence1.html">
+                    <button onclick="showAttendance()">Attendance Sheet</button>
+                </a>
+            </li>
+            <li>
+                <a href="faculty_dashboard.html">
+                    <button onclick="showDashboard()">Dashboard</button>
+                </a>
+            </li>
+            <li>
+                <a href="report.html">
+                    <button onclick="showReport()">Report</button>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>Attendance</h1>
+        <div class="filter-section">
+            <label>Subject:</label>
+            <select id="subjectSelect" onchange="filterAttendance()">
+                <option value="Advance Java">Advance Java</option>
+                <option value="Machine Learning">Machine Learning</option>
+            </select>
+
+            <label>Section:</label>
+            <select id="sectionSelect" onchange="filterAttendance()">
+                <option value="A">A</option>
+                <option value="B">B</option>
+            </select>
+
+            <label>Date:</label>
+            <input type="date" id="datePicker">
+            <button onclick="generateSheet()">Generate Sheet</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Course Name</th>
+                    <th>Attendance Count</th>
+                </tr>
+            </thead>
+            <tbody id="attendanceTable">
+                <!-- Attendance Data Will Be Inserted Here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="faculty_attendence1.js"></script>
+</body>
+</html>

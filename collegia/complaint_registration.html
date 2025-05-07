@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Registration</title>
+    <link rel="stylesheet" href="complaint_registration.css">
+    <script defer src="complaint_registration.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Colleginc</h2>
+        <div class="profile">
+            <p>Profile</p>
+            <span> B.Tech - Sem 6 </span>
+            <span id="clock">00:00 AM</span>
+        </div>
+        <!-- <ul>
+            <li class="active">Dashboard</li>
+            <li>Courses</li>
+            <li>Assignments</li>
+            <li>Study Materials</li>
+            <li>Discussion</li>
+            <li>Results</li>
+            <li>Meetings</li>
+            <li>Notifications</li>
+            <li>Attendance</li>
+            <li>Trackers</li>
+
+
+        </ul> -->
+
+        <ul>
+            <li><a href="faculty_dashboard.html">Dashboard</a></li>
+            <li><a href="courses.html">courses</a></li>
+            <li><a href="notifications.html">notifications</a></li>
+            <li><a href="report.html">report</a></li>
+            <li><a href="feedback.html">feedback</a></li>
+            <li><a href="calender.html">calender</a></li>
+            <li><a href="study_material.html">study_material</a></li>
+            <li><a href="complaint_management.html">complaint_management</a></li>
+            <li><a href="faculty_attendence1.html">faculty_attendence</a></li>
+            <li><a href="student_management.html">student_management</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Complaint Registration</h1>
+            <button onclick="toggleDarkMode()">🌙</button>
+        </header>
+
+        <div class="complaint-container">
+            <p>
+                Students can report complaints or grievances related to campus life, such as facilities, services, or academic issues, which will be reviewed and addressed by the administration.
+            </p>
+            <label for="complaint">Complaint Details:</label>
+            <textarea id="complaint" placeholder="Describe your issue here..." oninput="updateCharacterCount()"></textarea>
+            <p id="charCount"></p>
+            <button onclick="submitComplaint()">Submit Complaint</button>
+            <button onclick="resetComplaint()">Reset</button>
+        </div>
+
+        <div class="image-container">
+            <img src="https://s32891.pcdn.co/wp-content/uploads/2020/03/How-to-file-a-complaint.jpg"  alt="Complaint Concept" widhth="60px">
+        </div>
+    </div>
+</body>
+</html>

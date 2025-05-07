@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   display: flex;
+ background-color: #837eb1;
+    
+}
+.sidebar {
+    width: 200px;
+    background:  #2f4a7b;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar ul li {
+    margin: 10px 0;
+}
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background: #ecf0f1;
+}
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+.button {
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+.button span {
+    display: block;
+    font-size: 0.8em;
+    color: #dce5f3;
+}
