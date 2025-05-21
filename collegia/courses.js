@@ -1,42 +1,138 @@
+const API_URL = 'http://localhost:7001/api/courses';
+let courses = []; // Global variable declaration
 
+// Load courses from backend
+async function loadCourses() {
+    try {
+        const res = await fetch(API_URL);
+        courses = await res.json();
+        renderTable();
+    } catch (error) {
+        alert("⚠️ Failed to fetch courses from backend.");
+        console.error(error);
+    }
+}
+
+async function addCourse() {
+    const course = getCourseDetailsFromPrompt();
+    if (!course) return;
+
+    try {
+        const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(course)
+        });
+        const newCourse = await res.json();
+        courses.push(newCourse);
+        renderTable();
+    } catch (error) {
+        alert("⚠️ Failed to add course.");
+        console.error(error);
+    }
+}
+
+async function editCourse(index) {
+    const course = courses[index];
+    const updated = getCourseDetailsFromPrompt(course);
+    if (!updated) return;
+
+    try {
+        const res = await fetch(`${API_URL}/${course._id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updated)
+        });
+        const updatedCourse = await res.json();
+        courses[index] = updatedCourse;
+        renderTable();
+    } catch (error) {
+        alert("⚠️ Failed to update course.");
+        console.error(error);
+    }
+}
+
+async function deleteCourse(index) {
+    const course = courses[index];
+    if (!confirm("Are you sure you want to delete this course?")) return;
+
+    try {
+        await fetch(`${API_URL}/${course._id}`, { method: 'DELETE' });
+        courses.splice(index, 1);
+        renderTable();
+    } catch (error) {
+        alert("⚠️ Failed to delete course.");
+        console.error(error);
+    }
+}
+
+function renderTable() {
+    const tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = "";
+
+    courses.forEach((course, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${course.code}</td>
+            <td>${course.name}</td>
+            <td>${course.sessions}</td>
+            <td>${course.credits}</td>
+            <td>${course.faculty}</td>
+            <td>${course.area}</td>
+            <td>${course.nextLecture}</td>
+            <td class="actions">
+                <button onclick="editCourse(${index})">Edit</button>
+                <button onclick="deleteCourse(${index})">Delete</button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+function getCourseDetailsFromPrompt(existing = {}) {
+    const code = prompt("Enter Course Code:", existing.code || "");
+    const name = prompt("Enter Course Name:", existing.name || "");
+    const sessions = parseFloat(prompt("Enter Sessions:", existing.sessions || ""));
+    const credits = parseFloat(prompt("Enter Credits:", existing.credits || ""));
+    const faculty = prompt("Enter Faculty Name:", existing.faculty || "");
+    const area = prompt("Enter Area:", existing.area || "");
+    const nextLecture = prompt("Enter Next Lecture On (e.g., February 24):", existing.nextLecture || "");
+
+    if (
+        code && name && !isNaN(sessions) &&
+        !isNaN(credits) && faculty && area && nextLecture
+    ) {
+        return { code, name, sessions, credits, faculty, area, nextLecture };
+    } else {
+        alert("⚠️ Please fill all fields correctly.");
+        return null;
+    }
+}
+
+// Utility Functions
 function showAlert() {
-    alert("Class Schedule is under construction.");
+    alert("📅 Class Schedule is under construction.");
 }
 
 function highlightToday() {
-    const today = 'February 24';
+    const today = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
     const rows = document.querySelectorAll("#tableBody tr");
     rows.forEach(row => {
         const dateCell = row.children[6];
-        if (dateCell.textContent.trim() === today) {
-            row.style.backgroundColor = '#FFD700';
-        }
+        row.style.backgroundColor = dateCell.textContent.trim() === today ? '#FFD700' : '';
     });
 }
 
 function sortByName() {
-    const table = document.getElementById("tableBody");
-    const rows = Array.from(table.querySelectorAll("tr"));
-
-    rows.sort((a, b) => {
-        const nameA = a.children[1].textContent.trim().toLowerCase();
-        const nameB = b.children[1].textContent.trim().toLowerCase();
-        return nameA.localeCompare(nameB);
-    });
-
-    table.innerHTML = "";
-    rows.forEach(row => table.appendChild(row));
+    courses.sort((a, b) => a.name.localeCompare(b.name));
+    renderTable();
 }
 
 function exportToCSV() {
-    let csv = "Code,Name,Session,Credits,Faculty Name,Area,Next Lecture On\n";
-    const rows = document.querySelectorAll("#courseTable tr");
-
-    rows.forEach(row => {
-        const cells = Array.from(row.children).map(cell => cell.textContent.trim());
-        csv += cells.join(",") + "\n";
+    let csv = "Code,Name,Sessions,Credits,Faculty Name,Area,Next Lecture On\n";
+    courses.forEach(course => {
+        csv += `${course.code},${course.name},${course.sessions},${course.credits},${course.faculty},${course.area},${course.nextLecture}\n`;
     });
-
     const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -46,24 +142,18 @@ function exportToCSV() {
 }
 
 function countTotalCredits() {
-    const rows = document.querySelectorAll("#tableBody tr");
-    let totalCredits = 0;
-    rows.forEach(row => {
-        totalCredits += parseFloat(row.children[3].textContent.trim());
-    });
-    alert(`Total Credits: ${totalCredits}`);
+    const totalCredits = courses.reduce((sum, course) => sum + parseFloat(course.credits), 0);
+    alert(`🎓 Total Credits: ${totalCredits}`);
 }
 
 function filterByFaculty() {
     const facultyName = prompt("Enter Faculty Name:").trim().toLowerCase();
     const rows = document.querySelectorAll("#tableBody tr");
-
-    rows.forEach(row => {
-        const facultyCell = row.children[4].textContent.trim().toLowerCase();
-        if (!facultyCell.includes(facultyName)) {
-            row.style.display = "none";
-        } else {
-            row.style.display = "";
-        }
+    rows.forEach((row, index) => {
+        const faculty = courses[index].faculty.toLowerCase();
+        row.style.display = faculty.includes(facultyName) ? "" : "none";
     });
 }
+
+// Load data on start
+loadCourses();

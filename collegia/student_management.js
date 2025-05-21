@@ -4,35 +4,35 @@ async function fetchStudents() {
     return await res.json();
   }
   
-  // ➕ Add new student
+  //  Add new student
   async function addStudent(student) {
     await fetch("http://localhost:3000/api/students", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(student),
     });
-    loadAndRender(); // refresh table
+    loadAndRender(); 
   }
   
-  // ✏️ Update existing student
+  //  Update existing student
   async function updateStudent(id, student) {
     await fetch(`http://localhost:3000/api/students/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(student),
     });
-    loadAndRender(); // refresh table
+    loadAndRender(); 
   }
   
-  // ❌ Delete student
+  // Delete student
   async function deleteStudent(id) {
     await fetch(`http://localhost:3000/api/students/${id}`, {
       method: "DELETE",
     });
-    loadAndRender(); // refresh table
+    loadAndRender(); 
   }
   
-  // 🔁 Load and render all students into table
+  //  Load and render all students into table
   async function loadAndRender() {
     const students = await fetchStudents();
     const tbody = document.querySelector("#studentTable tbody");
@@ -52,7 +52,7 @@ async function fetchStudents() {
     });
   }
   
-  // 📥 Handle form submit for add/edit
+  //  Handle form submit for add/edit
   document.getElementById("studentForm").addEventListener("submit", async function (e) {
     e.preventDefault();
   
@@ -74,7 +74,7 @@ async function fetchStudents() {
     this.reset(); // clear form
   });
   
-  // ✍️ Fill form with existing student data for edit
+  //  Fill form with existing student data for edit
   function fillForm(student) {
     document.getElementById("name").value = student.name;
     document.getElementById("roll").value = student.roll;
@@ -82,6 +82,6 @@ async function fetchStudents() {
     document.getElementById("studentForm").dataset.id = student._id;
   }
   
-  // 🔃 Initial load
+  //  Initial load
   loadAndRender();
   

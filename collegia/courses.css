@@ -16,6 +16,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 1000px;
+    overflow: auto;
 }
 
 .logo {
@@ -24,18 +25,12 @@ body {
     left: 20px;
 }
 
-.logo img {
-    width: 20px;   /* Logo size reduced */
-    height: auto;
-}
-
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 }
-
 
 table {
     width: 100%;
@@ -60,6 +55,7 @@ tbody tr:hover {
 .buttons {
     margin-top: 20px;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
 }
@@ -71,4 +67,12 @@ button {
     padding: 8px 20px;
     border-radius: 20px;
     cursor: pointer;
+}
+
+.actions button {
+    margin: 0 2px;
+    background-color: #FF7F50;
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 12px;
 }

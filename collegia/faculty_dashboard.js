@@ -1,92 +1,138 @@
-// JavaScript for Faculty Dashboard Interactions
+const apiUrl = "http://localhost:7001/api/faculty";
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Functions for each feature
-
-    function showMessage(message) {
-        alert(`You selected: ${message}`);
-    }
-
-    function toggleSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function highlightCard(element) {
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => card.classList.remove('highlight'));
-        element.classList.add('highlight');
-    }
-
-    function generateReport() {
-        alert('Report generated successfully!');
-    }
-
-    function showNotification(message) {
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.innerText = message;
-        document.body.appendChild(notification);
-        setTimeout(() => notification.remove(), 3000);
-    }
-
-    function showDate() {
-        alert(`Today's date is: ${new Date().toLocaleDateString()}`);
-    }
-
-    function switchTheme() {
-        document.body.classList.toggle('dark-mode');
-    }
-
-    function validateForm() {
-        const input = document.querySelector('#inputField');
-        if (!input.value) {
-            alert('Please fill out the required field.');
-            return false;
+// Load all faculty data
+async function loadFaculty() {
+    try {
+        const response = await fetch(`${apiUrl}/all`);
+        const contentType = response.headers.get("content-type");
+        if (!response.ok || !contentType.includes("application/json")) {
+            throw new Error("Invalid response from server");
         }
-        return true;
-    }
 
-    function autoSave() {
-        showNotification('Auto-saving your data...');
-    }
+        const facultyList = await response.json();
+        const tableBody = document.querySelector("#faculty-table-body");
+        tableBody.innerHTML = "";
 
-    function expandCard(cardElement) {
-        cardElement.classList.toggle('expanded');
-    }
-
-    function logOut() {
-        alert('You have successfully logged out.');
-        window.location.href = '/login';
-    }
-
-    function confirmDeletion() {
-        if (confirm('Are you sure you want to delete this item?')) {
-            alert('Item deleted successfully.');
-        }
-    }
-
-    function feedbackPopup() {
-        const feedback = prompt('Please provide your feedback:');
-        if (feedback) {
-            alert('Thank you for your feedback!');
-        }
-    }
-
-    function openHelp() {
-        window.open('/help', '_blank');
-    }
-
-    // Assign functions to interactive elements
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('click', () => {
-            showMessage(card.innerText);
-            highlightCard(card);
+        facultyList.forEach(faculty => {
+            const row = `
+                <tr>
+                    <td>${faculty.name}</td>
+                    <td>${faculty.facultyId}</td>
+                    <td>${faculty.department}</td>
+                    <td>${faculty.designation}</td>
+                    <td>
+                        <button onclick="editFaculty('${faculty._id}')">Edit</button>
+                        <button onclick="deleteFaculty('${faculty._id}')">Delete</button>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
         });
-    });
+    } catch (error) {
+        alert(`Failed to load faculty: ${error.message}`);
+    }
+}
 
-    document.querySelector('#generateReport').addEventListener('click', generateReport);
-    document.querySelector('#showDate').addEventListener('click', showDate);
-    document.querySelector('#toggleSidebar').addEventListener('click', toggleSidebar);
-    document.querySelector('#logOut').addEventListener('click', logOut);
-});
+// Add new faculty
+async function addFaculty() {
+    const name = document.querySelector("#name").value;
+    const facultyId = document.querySelector("#facultyId").value;
+    const department = document.querySelector("#department").value;
+    const designation = document.querySelector("#designation").value;
+
+    if (!name || !facultyId || !department || !designation) {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    const data = { name, facultyId: Number(facultyId), department, designation };
+
+    try {
+        const response = await fetch(`${apiUrl}/add`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) throw new Error("Failed to add faculty");
+
+        await loadFaculty();
+        clearFields();
+    } catch (error) {
+        alert(`Error: ${error.message}`);
+    }
+}
+
+// Delete faculty
+async function deleteFaculty(id) {
+    if (!confirm("Are you sure you want to delete this faculty?")) return;
+
+    try {
+        const response = await fetch(`${apiUrl}/delete/${id}`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) throw new Error("Failed to delete");
+
+        await loadFaculty();
+    } catch (error) {
+        alert(`Error: ${error.message}`);
+    }
+}
+
+// Edit (prefill form)
+let editingId = null;
+
+function editFaculty(id) {
+    const row = [...document.querySelectorAll("tr")].find(r => r.innerHTML.includes(id));
+    const cells = row.querySelectorAll("td");
+
+    document.querySelector("#name").value = cells[0].textContent;
+    document.querySelector("#facultyId").value = cells[1].textContent;
+    document.querySelector("#department").value = cells[2].textContent;
+    document.querySelector("#designation").value = cells[3].textContent;
+
+    editingId = id;
+    document.querySelector("#addBtn").style.display = "none";
+    document.querySelector("#updateBtn").style.display = "inline-block";
+}
+
+// Update faculty
+async function updateFaculty() {
+    if (!editingId) return;
+
+    const name = document.querySelector("#name").value;
+    const facultyId = document.querySelector("#facultyId").value;
+    const department = document.querySelector("#department").value;
+    const designation = document.querySelector("#designation").value;
+
+    const data = { name, facultyId: Number(facultyId), department, designation };
+
+    try {
+        const response = await fetch(`${apiUrl}/update/${editingId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) throw new Error("Failed to update");
+
+        await loadFaculty();
+        clearFields();
+        editingId = null;
+        document.querySelector("#addBtn").style.display = "inline-block";
+        document.querySelector("#updateBtn").style.display = "none";
+    } catch (error) {
+        alert(`Error: ${error.message}`);
+    }
+}
+
+// Clear form fields
+function clearFields() {
+    document.querySelector("#name").value = "";
+    document.querySelector("#facultyId").value = "";
+    document.querySelector("#department").value = "";
+    document.querySelector("#designation").value = "";
+}
+
+window.onload = loadFaculty;
